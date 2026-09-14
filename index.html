@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BUCHIN - Basreng Renyah & Gurih Premium</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#FDFBF7',
+                            100: '#F5EFE6',
+                            200: '#E8DFCA',
+                            300: '#D2C4B0',
+                            600: '#A38C75',
+                            800: '#755F4B',
+                            900: '#524131',
+                            accent: '#8FA3B8', // Soft slate blue sesuai logo
+                            accentDark: '#667C94',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FDFBF7;
+            color: #524131;
+        }
+
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+
+<body class="bg-brand-50 text-brand-900 antialiased selection:bg-brand-200">
+
+    <!-- Top Bar Info -->
+    <div class="bg-brand-900 text-brand-100 text-xs py-2 px-4 text-center tracking-wide">
+        <span><i class="fa-solid fa-truck-fast mr-2"></i> Pengiriman Seluruh Indonesia dari Tangerang | Resmi &
+            Bergaransi Midtrans Payment</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header
+        class="sticky top-0 z-50 bg-[#FDFBF7]/95 backdrop-blur-md border-b border-brand-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo Brand -->
+            <a href="#beranda" class="flex items-center space-x-3 group">
+                <div
+                    class="w-12 h-12 rounded-full bg-brand-100 border border-brand-300 flex items-center justify-center shadow-sm group-hover:scale-105 transition">
+                    <span class="font-serif font-bold text-xl text-brand-900">BC</span>
+                </div>
+                <div>
+                    <span
+                        class="font-serif font-bold text-2xl tracking-wider text-brand-900 block leading-tight">BUCHIN</span>
+                    <span
+                        class="text-[10px] tracking-widest text-brand-accentDark font-semibold uppercase block">Basreng
+                        Renyah Premium</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#beranda" class="text-brand-900 hover:text-brand-accentDark transition">Beranda</a>
+                <a href="#katalog" class="text-brand-900 hover:text-brand-accentDark transition">Katalog Produk</a>
+                <a href="#tentang" class="text-brand-900 hover:text-brand-accentDark transition">Tentang Kami</a>
+                <a href="#syarat" class="text-brand-900 hover:text-brand-accentDark transition">Syarat & Ketentuan</a>
+                <a href="#privasi" class="text-brand-900 hover:text-brand-accentDark transition">Kebijakan Privasi</a>
+                <a href="#kontak" class="text-brand-900 hover:text-brand-accentDark transition">Kontak</a>
+            </nav>
+
+            <!-- Actions (Cart & Mobile Menu Toggle) -->
+            <div class="flex items-center space-x-4">
+                <button onclick="toggleCart()"
+                    class="relative p-2.5 rounded-full bg-brand-100 hover:bg-brand-200 text-brand-900 transition focus:outline-none">
+                    <i class="fa-solid fa-shopping-bag text-lg"></i>
+                    <span id="cart-badge"
+                        class="absolute -top-1 -right-1 bg-brand-accentDark text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow">0</span>
+                </button>
+                <button onclick="toggleMobileMenu()"
+                    class="md:hidden p-2.5 rounded-lg bg-brand-100 text-brand-900 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-100 border-b border-brand-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#beranda" onclick="toggleMobileMenu()" class="block py-2 font-medium text-brand-900">Beranda</a>
+            <a href="#katalog" onclick="toggleMobileMenu()" class="block py-2 font-medium text-brand-900">Katalog
+                Produk</a>
+            <a href="#tentang" onclick="toggleMobileMenu()" class="block py-2 font-medium text-brand-900">Tentang
+                Kami</a>
+            <a href="#syarat" onclick="toggleMobileMenu()" class="block py-2 font-medium text-brand-900">Syarat &
+                Ketentuan</a>
+            <a href="#privasi" onclick="toggleMobileMenu()" class="block py-2 font-medium text-brand-900">Kebijakan
+                Privasi</a>
+            <a href="#kontak" onclick="toggleMobileMenu()" class="block py-2 font-medium text-brand-900">Kontak</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda"
+        class="relative overflow-hidden py-16 lg:py-24 bg-gradient-to-b from-brand-100/60 to-brand-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-center lg:text-left">
+                    <span
+                        class="inline-flex items-center space-x-2 py-1.5 px-3 rounded-full bg-brand-200/60 text-brand-800 text-xs font-semibold tracking-wide">
+                        <i class="fa-solid fa-fire text-amber-600"></i>
+                        <span>100% Basreng Asli Ikan Pilihan & Extra Daun Jeruk</span>
+                    </span>
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-brand-900 leading-tight">
+                        Sensasi Renyah & Gurih <span class="italic text-brand-accentDark font-normal">Basreng
+                            BUCHIN</span>
+                    </h1>
+                    <p class="text-brand-800 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+                        Cemilan bakso goreng berkualitas tinggi dengan bumbu rempah pilihan berlimpah. Hadir dalam
+                        berbagai ukuran kemasan higienis siap menemani hari-hari santai Anda.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#katalog"
+                            class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-brand-900 text-white font-semibold shadow-lg hover:bg-brand-800 transition transform hover:-translate-y-0.5">
+                            <span>Lihat Katalog Produk</span>
+                            <i class="fa-solid fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                        <a href="#tentang"
+                            class="inline-flex items-center justify-center px-8 py-4 rounded-xl border border-brand-300 bg-white/50 text-brand-900 font-semibold hover:bg-brand-200/50 transition">
+                            Tentang Kami
+                        </a>
+                    </div>
+                    <!-- Trust Badges -->
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-brand-200/60 text-center lg:text-left">
+                        <div>
+                            <p class="font-serif font-bold text-xl text-brand-900">100%</p>
+                            <p class="text-xs text-brand-800">Halal & Higienis</p>
+                        </div>
+                        <div>
+                            <p class="font-serif font-bold text-xl text-brand-900">Renyah</p>
+                            <p class="text-xs text-brand-800">Tanpa Pengawet</p>
+                        </div>
+                        <div>
+                            <p class="font-serif font-bold text-xl text-brand-900">Secure</p>
+                            <p class="text-xs text-brand-800">Midtrans Checkout</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hero Image Grid -->
+                <div class="relative">
+                    <div
+                        class="absolute -inset-2 bg-gradient-to-r from-brand-accent to-brand-300 rounded-3xl blur-xl opacity-30">
+                    </div>
+                    <div class="relative bg-white p-4 rounded-3xl shadow-xl border border-brand-200">
+                        <img src="https://sin1.contabostorage.com/7441fb881eaa477692c0308f570f7a14:oss/uploads/test_alif/Gemini_Generated_Image_o9k31wo9k31wo9k3.jpg"
+                            alt="Basreng BUCHIN" class="w-full h-80 sm:h-96 object-cover rounded-2xl shadow-md"
+                            onerror="this.src='https://placehold.co/800x600/F5EFE6/524131?text=Basreng+Buchin'">
+                        <div
+                            class="absolute bottom-8 left-8 right-8 bg-white/90 backdrop-blur-md p-4 rounded-xl border border-brand-200 shadow-lg flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-brand-accent/20 text-brand-accentDark flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-award"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-brand-900">Best Seller Variant</h4>
+                                    <p class="text-xs text-brand-800">Basreng Pouch Medium Pedas Daun Jeruk</p>
+                                </div>
+                            </div>
+                            <span class="font-serif font-bold text-brand-900">Rp 25.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="katalog" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-bold tracking-widest text-brand-accentDark uppercase block mb-2">Katalog Produk
+                Resmi</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-900 mb-4">Pilih Ukuran & Varian Favoritmu
+            </h2>
+            <p class="text-brand-800 text-sm sm:text-base">Tersedia dalam berbagai pilihan ukuran kemasan zip-lock
+                higienis, dengan varian rasa Original Gurih dan Pedas Daun Jeruk.</p>
+
+            <!-- Category / Filter Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mt-8">
+                <button onclick="filterProducts('all')" id="btn-all"
+                    class="px-5 py-2 rounded-full text-sm font-semibold bg-brand-900 text-white transition shadow-sm">Semua
+                    Produk</button>
+                <button onclick="filterProducts('pouch')" id="btn-pouch"
+                    class="px-5 py-2 rounded-full text-sm font-semibold bg-brand-200 text-brand-900 hover:bg-brand-300 transition">Kemasan
+                    Pouch</button>
+                <button onclick="filterProducts('bulk')" id="btn-bulk"
+                    class="px-5 py-2 rounded-full text-sm font-semibold bg-brand-200 text-brand-900 hover:bg-brand-300 transition">Kemasan
+                    Keluarga</button>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Product 1 -->
+            <div class="product-card bg-white rounded-2xl border border-brand-200 shadow-sm hover:shadow-xl transition flex flex-col overflow-hidden group"
+                data-category="pouch">
+                <div class="relative overflow-hidden bg-brand-100 h-56">
+                    <img src="https://sin1.contabostorage.com/7441fb881eaa477692c0308f570f7a14:oss/uploads/test_alif/Gemini_Generated_Image_3jx19w3jx19w3jx1.jpg"
+                        alt="Basreng Pouch Mini"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                        onerror="this.src='https://placehold.co/400x300/F5EFE6/524131?text=Pouch+Mini'">
+                    <span
+                        class="absolute top-3 left-3 bg-brand-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Mini
+                        Pouch</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif font-bold text-lg text-brand-900">Basreng Pouch Mini 70g</h3>
+                            <span class="text-brand-accentDark font-bold text-sm">Rp 20.000</span>
+                        </div>
+                        <p class="text-xs text-brand-800 line-clamp-2 mb-4">Kemasan pas untuk cemilan santai sendiri.
+                            Pilihan rasa: Pedas Daun Jeruk atau Original Gurih.</p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-brand-100">
+                        <div class="flex items-center justify-between text-xs text-brand-800">
+                            <span><i class="fa-solid fa-weight-scale mr-1"></i> 70 Gram</span>
+                            <span class="text-emerald-600 font-semibold"><i class="fa-solid fa-check-circle mr-1"></i>
+                                Ready Stock</span>
+                        </div>
+                        <button
+                            onclick="addToCart('Basreng Pouch Mini 70g', 20000, 'https://sin1.contabostorage.com/7441fb881eaa477692c0308f570f7a14:oss/uploads/test_alif/Gemini_Generated_Image_3jx19w3jx19w3jx1.jpg')"
+                            class="w-full py-3 rounded-xl bg-brand-100 hover:bg-brand-900 hover:text-white text-brand-900 font-semibold text-sm transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Tambah ke Keranjang</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card bg-white rounded-2xl border border-brand-200 shadow-sm hover:shadow-xl transition flex flex-col overflow-hidden group"
+                data-category="pouch">
+                <div class="relative overflow-hidden bg-brand-100 h-56">
+                    <img src="https://sin1.contabostorage.com/7441fb881eaa477692c0308f570f7a14:oss/uploads/test_alif/Gemini_Generated_Image_ob2tmpob2tmpob2t.jpg"
+                        alt="Basreng Pouch Medium"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                        onerror="this.src='https://placehold.co/400x300/F5EFE6/524131?text=Pouch+Medium'">
+                    <span
+                        class="absolute top-3 left-3 bg-brand-accentDark text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Best
+                        Seller</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif font-bold text-lg text-brand-900">Basreng Pouch Medium 150g</h3>
+                            <span class="text-brand-accentDark font-bold text-sm">Rp 32.000</span>
+                        </div>
+                        <p class="text-xs text-brand-800 line-clamp-2 mb-4">Paling favorit! Ukuran pas buat nemenin
+                            kerja atau nonton drakor. Zip-lock kedap udara.</p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-brand-100">
+                        <div class="flex items-center justify-between text-xs text-brand-800">
+                            <span><i class="fa-solid fa-weight-scale mr-1"></i> 150 Gram</span>
+                            <span class="text-emerald-600 font-semibold"><i class="fa-solid fa-check-circle mr-1"></i>
+                                Ready Stock</span>
+                        </div>
+                        <button
+                            onclick="addToCart('Basreng Pouch Medium 150g', 32000, 'https://sin1.contabostorage.com/7441fb881eaa477692c0308f570f7a14:oss/uploads/test_alif/Gemini_Generated_Image_ob2tmpob2tmpob2t.jpg')"
+                            class="w-full py-3 rounded-xl bg-brand-100 hover:bg-brand-900 hover:text-white text-brand-900 font-semibold text-sm transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Tambah ke Keranjang</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card bg-white rounded-2xl border border-brand-200 shadow-sm hover:shadow-xl transition flex flex-col overflow-hidden group"
+                data-category="bulk">
+                <div class="relative overflow-hidden bg-brand-100 h-56">
+                    <img src="https://sin1.contabostorage.com/7441fb881eaa477692c0308f570f7a14:oss/uploads/test_alif/Gemini_Generated_Image_jvlue1jvlue1jvlu.jpg"
+                        alt="Basreng Pouch Large"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                        onerror="this.src='https://placehold.co/400x300/F5EFE6/524131?text=Pouch+Large'">
+                    <span
+                        class="absolute top-3 left-3 bg-brand-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Large
+                        Pack</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif font-bold text-lg text-brand-900">Basreng Pouch Large 300g</h3>
+                            <span class="text-brand-accentDark font-bold text-sm">Rp 55.000</span>
+                        </div>
+                        <p class="text-xs text-brand-800 line-clamp-2 mb-4">Puas banget! Cocok untuk stok cemilan di
+                            rumah atau dibagikan bersama teman terdekat.</p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-brand-100">
+                        <div class="flex items-center justify-between text-xs text-brand-800">
+                            <span><i class="fa-solid fa-weight-scale mr-1"></i> 300 Gram</span>
+                            <span class="text-emerald-600 font-semibold"><i class="fa-solid fa-check-circle mr-1"></i>
+                                Ready Stock</span>
+                        </div>
+                        <button
+                            onclick="addToCart('Basreng Pouch Large 300g', 55000, 'https://sin1.contabostorage.com/7441fb881eaa477692c0308f570f7a14:oss/uploads/test_alif/Gemini_Generated_Image_jvlue1jvlue1jvlu.jpg')"
+                            class="w-full py-3 rounded-xl bg-brand-100 hover:bg-brand-900 hover:text-white text-brand-900 font-semibold text-sm transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Tambah ke Keranjang</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card bg-white rounded-2xl border border-brand-200 shadow-sm hover:shadow-xl transition flex flex-col overflow-hidden group"
+                data-category="bulk">
+                <div class="relative overflow-hidden bg-brand-100 h-56">
+                    <img src="https://sin1.contabostorage.com/7441fb881eaa477692c0308f570f7a14:oss/uploads/test_alif/Gemini_Generated_Image_eg2yi2eg2yi2eg2y.jpg"
+                        alt="Basreng Jumbo Pack"
+                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                        onerror="this.src='https://placehold.co/400x300/F5EFE6/524131?text=Jumbo+Pack'">
+                    <span
+                        class="absolute top-3 left-3 bg-amber-700 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Jumbo
+                        Family</span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif font-bold text-lg text-brand-900">Basreng Jumbo Pack 500g</h3>
+                            <span class="text-brand-accentDark font-bold text-sm">Rp 75.000</span>
+                        </div>
+                        <p class="text-xs text-brand-800 line-clamp-2 mb-4">Kemasan super hemat untuk keluarga besar
+                            atau acara kumpul-kumpul. Super renyah dan gurih!</p>
+                    </div>
+                    <div class="space-y-3 pt-4 border-t border-brand-100">
+                        <div class="flex items-center justify-between text-xs text-brand-800">
+                            <span><i class="fa-solid fa-weight-scale mr-1"></i> 500 Gram</span>
+                            <span class="text-emerald-600 font-semibold"><i class="fa-solid fa-check-circle mr-1"></i>
+                                Ready Stock</span>
+                        </div>
+                        <button
+                            onclick="addToCart('Basreng Jumbo Pack 500g', 75000, 'https://sin1.contabostorage.com/7441fb881eaa477692c0308f570f7a14:oss/uploads/test_alif/Gemini_Generated_Image_eg2yi2eg2yi2eg2y.jpg')"
+                            class="w-full py-3 rounded-xl bg-brand-100 hover:bg-brand-900 hover:text-white text-brand-900 font-semibold text-sm transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-cart-plus"></i>
+                            <span>Tambah ke Keranjang</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="py-20 bg-brand-100/50 border-y border-brand-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-xs font-bold tracking-widest text-brand-accentDark uppercase block">Tentang Brand
+                        Kami</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-900 leading-tight">
+                        Dedikasi Menghadirkan Basreng Berkualitas Premium di Indonesia
+                    </h2>
+                    <p class="text-brand-800 text-sm sm:text-base leading-relaxed">
+                        <strong>BUCHIN</strong> berawal dari kecintaan terhadap kuliner tradisional bakso goreng dengan
+                        sentuhan modern. Kami memproduksi basreng pilihan menggunakan daging ikan berkualitas tinggi,
+                        digoreng dengan tingkat kerenyahan yang pas, serta diracik bersama bumbu rahasia daun jeruk
+                        segar yang aromatik.
+                    </p>
+                    <p class="text-brand-800 text-sm sm:text-base leading-relaxed">
+                        Berbasis di Tangerang, kami melayani pengiriman ke seluruh wilayah Indonesia dengan sistem
+                        pemesanan dan pembayaran online aman yang didukung oleh <strong>Midtrans Payment
+                            Gateway</strong>.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="bg-white p-4 rounded-2xl border border-brand-200">
+                            <i class="fa-solid fa-shield-halved text-2xl text-brand-accentDark mb-2"></i>
+                            <h4 class="font-bold text-brand-900 text-sm">Legalitas Terpercaya</h4>
+                            <p class="text-xs text-brand-800 mt-1">Berbadan usaha resmi dan transparan dalam
+                                bertransaksi.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl border border-brand-200">
+                            <i class="fa-solid fa-box-open text-2xl text-brand-accentDark mb-2"></i>
+                            <h4 class="font-bold text-brand-900 text-sm">Packing Aman</h4>
+                            <p class="text-xs text-brand-800 mt-1">Dilengkapi bubble wrap dan kemasan zip-lock tebal.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-white p-6 rounded-3xl shadow-xl border border-brand-200 space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-16 h-16 rounded-2xl bg-brand-200 flex items-center justify-center text-brand-900 font-serif font-bold text-2xl">
+                                BC
+                            </div>
+                            <div>
+                                <h3 class="font-serif font-bold text-xl text-brand-900">CV. BUCHIN SNACK INDONESIA</h3>
+                                <p class="text-xs text-brand-accentDark">Produsen & Distributor Makanan Ringan</p>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-sm text-brand-800">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-location-dot text-brand-accentDark mt-1"></i>
+                                <span>Jl. BSD Grand Boulevard, Sektor 7, Tangerang Selatan, Banten 15310</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-envelope text-brand-accentDark"></i>
+                                <span>support@buchin-snack.com</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-phone text-brand-accentDark"></i>
+                                <span>+62 812-3456-7890 (WhatsApp Official)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-clock text-brand-accentDark"></i>
+                                <span>Senin - Sabtu: 09:00 - 18:00 WIB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms & Conditions Section (Required for Midtrans) -->
+    <section id="syarat" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-8 sm:p-12 rounded-3xl border border-brand-200 shadow-sm space-y-8">
+            <div class="border-b border-brand-200 pb-6">
+                <span class="text-xs font-bold tracking-widest text-brand-accentDark uppercase block mb-2">Legalitas &
+                    Ketentuan Layanan</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-900">Syarat & Ketentuan (Terms &
+                    Conditions)</h2>
+                <p class="text-xs text-brand-800 mt-1">Terakhir diperbarui: Januari 2026</p>
+            </div>
+
+            <div class="space-y-6 text-sm text-brand-800 leading-relaxed">
+                <div>
+                    <h3 class="font-bold text-brand-900 text-base mb-2">1. Ketentuan Umum</h3>
+                    <p>Selamat datang di situs resmi BUCHIN (buchin-snack.com). Dengan mengakses dan melakukan pemesanan
+                        produk melalui website kami, Anda dianggap telah membaca, memahami, dan menyetujui seluruh
+                        Syarat & Ketentuan yang berlaku.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-brand-900 text-base mb-2">2. Pemesanan dan Pembayaran</h3>
+                    <p>Pemesanan produk basreng dilakukan secara online melalui katalog kami. Pembayaran diproses secara
+                        aman menggunakan layanan pihak ketiga terverifikasi, yaitu <strong>Midtrans Payment
+                            Gateway</strong>, yang mendukung berbagai metode pembayaran seperti Transfer Bank (VA),
+                        QRIS, E-Wallet, dan Kartu Kredit.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-brand-900 text-base mb-2">3. Kebijakan Pengiriman</h3>
+                    <p>Pesanan akan dikirimkan dari pusat distribusi kami di Tangerang menggunakan mitra kurir logistik
+                        terpercaya. Estimasi waktu pengiriman bergantung pada lokasi tujuan dan layanan kurir yang
+                        dipilih saat checkout.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-brand-900 text-base mb-2">4. Pengembalian Barang & Dana (Refund)</h3>
+                    <p>Jika produk yang diterima mengalami kerusakan parah akibat proses pengiriman atau tidak sesuai
+                        pesanan, pelanggan dapat mengajukan klaim maksimal 1x24 jam setelah paket diterima dengan
+                        menyertakan video unboxing lengkap.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Policy Section (Required for Midtrans) -->
+    <section id="privasi" class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white p-8 sm:p-12 rounded-3xl border border-brand-200 shadow-sm space-y-8">
+            <div class="border-b border-brand-200 pb-6">
+                <span class="text-xs font-bold tracking-widest text-brand-accentDark uppercase block mb-2">Keamanan &
+                    Data Pengguna</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-900">Kebijakan Privasi (Privacy Policy)
+                </h2>
+                <p class="text-xs text-brand-800 mt-1">Terakhir diperbarui: Januari 2026</p>
+            </div>
+
+            <div class="space-y-6 text-sm text-brand-800 leading-relaxed">
+                <div>
+                    <h3 class="font-bold text-brand-900 text-base mb-2">1. Pengumpulan Informasi Pribadi</h3>
+                    <p>Kami mengumpulkan informasi pribadi Anda saat melakukan pendaftaran, pemesanan, atau menghubungi
+                        layanan pelanggan, seperti nama lengkap, alamat email, nomor telepon, dan alamat pengiriman.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-brand-900 text-base mb-2">2. Penggunaan Informasi</h3>
+                    <p>Informasi yang dikumpulkan digunakan solely untuk memproses pesanan, mengirimkan produk,
+                        memberikan konfirmasi transaksi, serta meningkatkan kualitas layanan kami. Kami tidak pernah
+                        memperjualbelikan data pribadi Anda.</p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-brand-900 text-base mb-2">3. Keamanan Pembayaran via Midtrans</h3>
+                    <p>Seluruh transaksi keuangan diproses melalui sistem enkripsi tingkat tinggi dari
+                        <strong>Midtrans</strong>. BUCHIN tidak menyimpan data sensitif kartu kredit atau sandi akun
+                        perbankan Anda di server kami.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontak" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-brand-900 text-white rounded-3xl p-8 sm:p-16 relative overflow-hidden">
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-800 rounded-full blur-3xl opacity-50"></div>
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <span class="text-xs font-bold tracking-widest text-brand-accent uppercase block">Hubungi
+                        Kami</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold">Punya Pertanyaan atau Butuh Bantuan?</h2>
+                    <p class="text-brand-100 text-sm sm:text-base">Tim support BUCHIN siap membantu Anda setiap hari
+                        Senin sampai Sabtu pada jam operasional kerja.</p>
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-brand-800 flex items-center justify-center text-brand-accent">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-brand-300">WhatsApp Official</p>
+                                <p class="font-bold text-sm">+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-brand-800 flex items-center justify-center text-brand-accent">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-brand-300">Email Layanan</p>
+                                <p class="font-bold text-sm">support@buchin-snack.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-brand-800 flex items-center justify-center text-brand-accent">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-brand-300">Lokasi Usaha</p>
+                                <p class="font-bold text-sm">Tangerang Selatan, Banten</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white text-brand-900 p-8 rounded-2xl shadow-xl">
+                    <h3 class="font-serif font-bold text-2xl mb-4">Kirim Pesan Singkat</h3>
+                    <form onsubmit="handleContact(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-brand-800 uppercase mb-1">Nama Lengkap</label>
+                            <input type="text" required
+                                class="w-full px-4 py-3 rounded-xl border border-brand-200 focus:outline-none focus:border-brand-900 text-sm"
+                                placeholder="Masukkan nama Anda">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-brand-800 uppercase mb-1">Nomor WhatsApp /
+                                Email</label>
+                            <input type="text" required
+                                class="w-full px-4 py-3 rounded-xl border border-brand-200 focus:outline-none focus:border-brand-900 text-sm"
+                                placeholder="08xxxxxxxxxx">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-brand-800 uppercase mb-1">Pesan / Kendala</label>
+                            <textarea rows="3" required
+                                class="w-full px-4 py-3 rounded-xl border border-brand-200 focus:outline-none focus:border-brand-900 text-sm"
+                                placeholder="Tuliskan pesan Anda..."></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full py-3.5 rounded-xl bg-brand-900 text-white font-semibold hover:bg-brand-800 transition">Kirim
+                            Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-900 text-brand-100 border-t border-brand-800 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="space-y-4 md:col-span-1">
+                    <div class="flex items-center space-x-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center font-serif font-bold text-brand-900">
+                            BC</div>
+                        <span class="font-serif font-bold text-xl text-white">BUCHIN</span>
+                    </div>
+                    <p class="text-xs text-brand-300 leading-relaxed">
+                        Brand makanan ringan basreng renyah pilihan berkualitas tinggi. Terdaftar dan siap melayani
+                        transaksi aman via Midtrans.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Navigasi</h4>
+                    <ul class="space-y-2 text-xs text-brand-300">
+                        <li><a href="#beranda" class="hover:text-white transition">Beranda</a></li>
+                        <li><a href="#katalog" class="hover:text-white transition">Katalog Produk</a></li>
+                        <li><a href="#tentang" class="hover:text-white transition">Tentang Kami</a></li>
+                        <li><a href="#kontak" class="hover:text-white transition">Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Legal & Kebijakan</h4>
+                    <ul class="space-y-2 text-xs text-brand-300">
+                        <li><a href="#syarat" class="hover:text-white transition">Syarat & Ketentuan</a></li>
+                        <li><a href="#privasi" class="hover:text-white transition">Kebijakan Privasi</a></li>
+                        <li><a href="#katalog" class="hover:text-white transition">Pengiriman & Refund</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white text-sm mb-4 uppercase tracking-wider">Metode Pembayaran</h4>
+                    <p class="text-xs text-brand-300 mb-3">Didukung penuh oleh sistem pembayaran terverifikasi:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 bg-brand-800 rounded text-[10px] font-bold text-white">Midtrans</span>
+                        <span class="px-2.5 py-1 bg-brand-800 rounded text-[10px] font-bold text-white">QRIS</span>
+                        <span class="px-2.5 py-1 bg-brand-800 rounded text-[10px] font-bold text-white">Virtual
+                            Account</span>
+                        <span class="px-2.5 py-1 bg-brand-800 rounded text-[10px] font-bold text-white">E-Wallet</span>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="border-t border-brand-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-brand-300">
+                <p>&copy; 2026 CV. BUCHIN SNACK INDONESIA. Hak Cipta Dilindungi.</p>
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#syarat" class="hover:text-white transition">Syarat & Ketentuan</a>
+                    <a href="#privasi" class="hover:text-white transition">Kebijakan Privasi</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer Modal -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                <!-- Cart Header -->
+                <div class="p-6 border-b border-brand-200 flex items-center justify-between bg-brand-50">
+                    <div class="flex items-center space-x-2">
+                        <i class="fa-solid fa-shopping-bag text-brand-900"></i>
+                        <h3 class="font-serif font-bold text-lg text-brand-900">Keranjang Belanja</h3>
+                    </div>
+                    <button onclick="toggleCart()" class="p-2 rounded-lg text-brand-800 hover:bg-brand-200 transition">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Cart Items List -->
+                <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dinamis via JS -->
+                    <div class="text-center text-brand-800 py-12" id="empty-cart-msg">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-brand-300 mb-3 block"></i>
+                        <p class="text-sm">Keranjang belanja Anda masih kosong.</p>
+                    </div>
+                </div>
+
+                <!-- Cart Footer / Checkout -->
+                <div class="p-6 border-t border-brand-200 bg-brand-50 space-y-4" id="cart-footer">
+                    <div class="flex justify-between items-center text-base font-bold text-brand-900">
+                        <span>Total Pembayaran:</span>
+                        <span id="cart-total">Rp 0</span>
+                    </div>
+                    <button onclick="proceedCheckout()" id="checkout-btn" disabled
+                        class="w-full py-4 rounded-xl bg-brand-300 text-white font-semibold cursor-not-allowed transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-lock text-xs"></i>
+                        <span>Checkout via Midtrans</span>
+                    </button>
+                    <p class="text-[10px] text-center text-brand-800">Pembayaran aman terenkripsi & diverifikasi oleh
+                        Midtrans Payment Gateway.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification / Message Box (Custom modal replacement for alert) -->
+    <div id="msg-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm" onclick="closeMsgModal()"></div>
+        <div
+            class="relative bg-white rounded-2xl p-6 max-w-sm w-full mx-4 shadow-2xl text-center space-y-4 border border-brand-200">
+            <div id="msg-icon"
+                class="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto text-xl">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h4 id="msg-title" class="font-serif font-bold text-xl text-brand-900">Berhasil!</h4>
+            <p id="msg-text" class="text-xs text-brand-800 leading-relaxed">Pesan notifikasi.</p>
+            <button onclick="closeMsgModal()"
+                class="w-full py-3 rounded-xl bg-brand-900 text-white text-sm font-semibold hover:bg-brand-800 transition">Tutup</button>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // State Keranjang
+        let cart = [];
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.className = "fa-solid fa-bars text-xl";
+            } else {
+                icon.className = "fa-solid fa-xmark text-xl";
+            }
+        }
+
+        // Filter Products
+        function filterProducts(category) {
+            const cards = document.querySelectorAll('.product-card');
+            const btnAll = document.getElementById('btn-all');
+            const btnPouch = document.getElementById('btn-pouch');
+            const btnBulk = document.getElementById('btn-bulk');
+
+            // Reset button styles
+            [btnAll, btnPouch, btnBulk].forEach(btn => {
+                btn.className = "px-5 py-2 rounded-full text-sm font-semibold bg-brand-200 text-brand-900 hover:bg-brand-300 transition";
+            });
+
+            if (category === 'all') {
+                btnAll.className = "px-5 py-2 rounded-full text-sm font-semibold bg-brand-900 text-white transition shadow-sm";
+                cards.forEach(card => card.style.display = 'flex');
+            } else if (category === 'pouch') {
+                btnPouch.className = "px-5 py-2 rounded-full text-sm font-semibold bg-brand-900 text-white transition shadow-sm";
+                cards.forEach(card => {
+                    if (card.getAttribute('data-category') === 'pouch') card.style.display = 'flex';
+                    else card.style.display = 'none';
+                });
+            } else if (category === 'bulk') {
+                btnBulk.className = "px-5 py-2 rounded-full text-sm font-semibold bg-brand-900 text-white transition shadow-sm";
+                cards.forEach(card => {
+                    if (card.getAttribute('data-category') === 'bulk') card.style.display = 'flex';
+                    else card.style.display = 'none';
+                });
+            }
+        }
+
+        // Toggle Cart Drawer
+        function toggleCart() {
+            const drawer = document.getElementById('cart-drawer');
+            drawer.classList.toggle('hidden');
+            renderCart();
+        }
+
+        // Add to Cart
+        function addToCart(name, price, image) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ name, price, image, qty: 1 });
+            }
+            updateCartBadge();
+            showMsgModal("Berhasil Ditambahkan!", `${name} telah dimasukkan ke keranjang belanja.`);
+        }
+
+        // Update Cart Badge
+        function updateCartBadge() {
+            const badge = document.getElementById('cart-badge');
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            badge.innerText = totalQty;
+        }
+
+        // Render Cart Items
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+            const totalEl = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center text-brand-800 py-12">
+                        <i class="fa-solid fa-basket-shopping text-4xl text-brand-300 mb-3 block"></i>
+                        <p class="text-sm">Keranjang belanja Anda masih kosong.</p>
+                    </div>
+                `;
+                totalEl.innerText = "Rp 0";
+                checkoutBtn.disabled = true;
+                checkoutBtn.className = "w-full py-4 rounded-xl bg-brand-300 text-white font-semibold cursor-not-allowed transition flex items-center justify-center space-x-2";
+                return;
+            }
+
+            let html = '';
+            let grandTotal = 0;
+
+            cart.forEach((item, index) => {
+                let subtotal = item.price * item.qty;
+                grandTotal += subtotal;
+                html += `
+                    <div class="flex items-center space-x-4 bg-brand-50 p-3 rounded-xl border border-brand-200">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg" onerror="this.src='https://placehold.co/100x100/F5EFE6/524131?text=Basreng'">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-xs text-brand-900">${item.name}</h4>
+                            <p class="text-xs text-brand-accentDark font-semibold mt-0.5">Rp ${item.price.toLocaleString('id-ID')}</p>
+                            <div class="flex items-center space-x-2 mt-2">
+                                <button onclick="decreaseQty(${index})" class="w-6 h-6 rounded bg-white border border-brand-200 text-brand-900 flex items-center justify-center text-xs hover:bg-brand-200">-</button>
+                                <span class="text-xs font-bold text-brand-900">${item.qty}</span>
+                                <button onclick="increaseQty(${index})" class="w-6 h-6 rounded bg-white border border-brand-200 text-brand-900 flex items-center justify-center text-xs hover:bg-brand-200">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeItem(${index})" class="text-brand-800 hover:text-red-600 p-2"><i class="fa-solid fa-trash-can text-sm"></i></button>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            totalEl.innerText = `Rp ${grandTotal.toLocaleString('id-ID')}`;
+            checkoutBtn.disabled = false;
+            checkoutBtn.className = "w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold shadow-lg transition flex items-center justify-center space-x-2 cursor-pointer";
+        }
+
+        function increaseQty(index) {
+            cart[index].qty += 1;
+            renderCart();
+            updateCartBadge();
+        }
+
+        function decreaseQty(index) {
+            if (cart[index].qty > 1) {
+                cart[index].qty -= 1;
+            } else {
+                cart.splice(index, 1);
+            }
+            renderCart();
+            updateCartBadge();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+            updateCartBadge();
+        }
+
+        // Simulate Midtrans Checkout
+        function proceedCheckout() {
+            toggleCart();
+            showMsgModal("Menghubungkan ke Midtrans...", "Simulasi pembayaran aman sedang diproses. Pada tahap produksi live, Anda akan diarahkan ke halaman Snap Midtrans.");
+            cart = [];
+            updateCartBadge();
+        }
+
+        // Contact Form Handler
+        function handleContact(e) {
+            e.preventDefault();
+            showMsgModal("Pesan Terkirim!", "Terima kasih telah menghubungi BUCHIN. Tim kami akan segera merespons pesan Anda.");
+            e.target.reset();
+        }
+
+        // Modal Helpers
+        function showMsgModal(title, text) {
+            document.getElementById('msg-title').innerText = title;
+            document.getElementById('msg-text').innerText = text;
+            document.getElementById('msg-modal').classList.remove('hidden');
+        }
+
+        function closeMsgModal() {
+            document.getElementById('msg-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+
+</html>
